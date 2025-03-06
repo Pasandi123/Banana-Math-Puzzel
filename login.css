@@ -11,11 +11,15 @@ body{
 }
 
 .container{
-    background: green; 
+    background: rgb(1, 97, 1); 
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;   
+}
+
+#title-form{
+    color: #ddd;
 }
 
 input{
@@ -28,7 +32,7 @@ input{
 }
 
 button{
-    background: rgb(232, 232, 141);
+    background: rgb(228, 213, 0);
     color: #000;
     padding: 10px;
     border: none;
@@ -44,3 +48,12 @@ button{
     cursor: pointer;
 }
 
+img{
+    height: 55px;
+    width: 55px;
+    cursor: pointer;
+}
+
+p{
+    color: #ddd;
+}
