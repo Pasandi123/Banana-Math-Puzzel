@@ -11,11 +11,11 @@ body{
 }
 
 .container{
-    background: rgb(1, 97, 1); 
+    background: rgb(1, 97, 1);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;   
+    text-align: center;
 }
 
 #title-form{
@@ -25,10 +25,10 @@ body{
 input{
     width: 90%;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
+    margin: 10px;
+    border:1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 button{
@@ -39,12 +39,16 @@ button{
     cursor: pointer;
     width: 100%;
     border-radius: 5px;
+    margin-top: 30px;
 }
 
-.btn-toggle{
-    background: none;
+#submit-btn:hover{
+    background-color: rgb(183, 182, 101);
+}
+
+.btn-toggle {
     color: #ddd;
-    border: none;
+    text-decoration: none;
     cursor: pointer;
 }
 
@@ -52,6 +56,11 @@ img{
     height: 55px;
     width: 55px;
     cursor: pointer;
+}
+
+#google-login{
+    background: none;
+    margin-top: 0px;
 }
 
 p{

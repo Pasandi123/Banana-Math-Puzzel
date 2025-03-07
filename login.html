@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login & Sign Up</title>
-        <link rel="stylesheet" href="login.css">
-    </head>
-    <body>
-        <div class="container">
-            <h2 id="title-form">Login</h2>
-            <form id="auth-form">
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <input type="text" id="username" placeholder="Username" style="display: none;">
-                <button type="submit" id="submit-btn">Login</button>
-            </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="title-form">Login</h2>
+        <form id="auth-form">
+            <input type="text" id="username" placeholder="Username" style="display: none;">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" id="submit-btn">Login</button>
             <p>
-                <button class="btn-toggle" id="btn-toggle">Don't have an account? Sign Up</button>
+                <a href="#" class="btn-toggle" id="btn-toggle">Don't have an account? Sign Up</a>
             </p>
-            <p>or</p>
-            <img src="image/Google_Icons.webp">
-            <script src="login.js"></script>
-        </div>
-    </body>
+        </form>
+
+        <p>Or</p>
+        <button id="google-login">
+            <img src="image/Google_Icons.webp" alt="Login with Google">
+        </button>
+
+       <script type="module" src="login.js"></script>
+    </div>
+</body>
 </html>
