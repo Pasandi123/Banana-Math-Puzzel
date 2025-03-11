@@ -1,0 +1,49 @@
+body{
+    background-color: #fff9c4;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+h1{
+    font-size: 70px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+    color: black;
+}
+
+.button{
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 150px;
+    text-transform: uppercase;
+}
+
+#startButton{
+    background-color: rgb(1, 97, 1);
+    color: white;
+}
+
+#exitButton{
+    background-color: red;
+    color: white;
+}
+
+#gameImage {
+    width: 25%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
