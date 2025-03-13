@@ -99,7 +99,7 @@ googleLoginBtn.addEventListener("click", async () => {
         alert("Google Login Successful!");
         console.log("User logged in with Google:", user);
 
-        window.location.href = "startpage.htm";
+        window.location.href = "startpage.html";
 
     }catch (error){
         alert("Google Login Error: " + error.message);
