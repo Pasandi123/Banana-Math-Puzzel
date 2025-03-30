@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
+import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBIajj3vQed9DndpqovRZdNZOUr8R6zUn8",
@@ -48,6 +48,7 @@ function fetchPuzzle(){
     if (questionCount >= maxQuestions){
         endGame(`Congratulations! You reached the flag! Your Score: ${score}`);
         moveBoyToFlag();
+        updateUserScore();
         return;
     }
 
@@ -75,6 +76,7 @@ function startTimer(){
         if (timeLeft <= 0) {
             clearInterval(timer);
             endGame("Time's up! Try again.");
+            updateUserScore();
         }
     }, 1000);
 }
@@ -95,6 +97,7 @@ function dropBanana() {
     banana.style.bottom = "50px";
     setTimeout(() => {
         endGame("A Banana fell down! Game Over.");
+        updateUserScore();
     }, 500);
 }
 
@@ -159,4 +162,25 @@ function endGame(message) {
     document.getElementById("gameOverMessage").textContent=message;
     document.getElementById("gameOverScreen").style.display="block";
 }
+
+async function updateUserScore() {
+    const user = auth.currentUser;
+    if(user){
+        try{
+            const userRef = ref(db, `users/${user.uid}`);
+            const snapshot = await get (userRef);
+            let currentScore = 0;
+            if(snapshot.exists() && snapshot.val().score){
+                currentScore = snapshot.val().score;
+            }
+            await update(userRef, {
+                score: currentScore + score
+            });
+            console.log("Score updated successfully.");
+        }catch(error){
+            console.error("Error updating score:", error);
+        }
+    }
+}
+
 window.onload = fetchPuzzle;
