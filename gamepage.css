@@ -1,0 +1,90 @@
+body{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fff9c4;
+    margin: 0;
+    padding: 0;
+    background-image: url("./image/blank-forest.avif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+h1{
+    font-size: 40px;
+}
+
+#usernameDisplay{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#puzzleImage{
+    width: 580px;
+    height: 280px;
+}
+
+#answerInput{
+    padding: 7px;
+}
+
+.gameButton{
+    font-size: 16px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#gameOverScreen{
+    display: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+}
+
+#gameArea{
+    position: relative;
+    width: 650px;
+    height: 150px;
+    margin: auto;
+    overflow: hidden;
+}
+
+#boy{
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 170px;
+    height: 150px;
+    transition: left 0.5s;
+    margin-bottom: -20px;
+}
+
+#banana{
+    position: absolute;
+    bottom: 100px;
+    left: 10px;
+    width: 80px;
+    height: 50px;
+    display: block;
+    transition: left 0.5s;
+}
+
+#flag{
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    width: 130px;
+    height: 130px;
+}
+
+.gameOverButton{
+    background-color: green;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin: 0px;
+    color: white;
+}
