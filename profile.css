@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('image/forest.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-container {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+.profile-info {
+    margin: 20px 0;
+}
+
+.profile-info p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.profile-buttons button {
+    margin: 10px;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.profile-buttons button:hover{
+    transform: scale(1.2);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+}
+
+.profile-buttons button:active{
+    transform: scale(1.1);
+}
