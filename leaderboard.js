@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { getDatabase, ref, get, query, orderByChild, limitToLast } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBIajj3vQed9DndpqovRZdNZOUr8R6zUn8",
@@ -16,58 +16,66 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
-function loadLeaderboard() {
-    const leaderboardTable = document.getElementById("leaderboardTable");
-    leaderboardTable.innerHTML = "<tr><td colspan='4'>Loading...</td></tr>";
+function loadLeaderboard(){
+    const leaderboardBody = document.getElementById("leaderboard-body");
+    leaderboardBody.innerHTML = "<tr><td colspan='4'>Loading...</td><tr>";
 
-    const leaderboardQuery = ref(db, "/");
+    const leaderboardQuery = ref(db, "/users");
 
     get(leaderboardQuery)
-        .then((snapshot) => {
-            if (snapshot.exists()) {
-                const users = [];
-                snapshot.forEach((childSnapshot) => {
-                    const userData = childSnapshot.val();
-                    console.log("User data:", userData); // Debugging log
-                    Object.values(userData).forEach((user) => {
-                        if (user && user.username && user.score !== undefined) {
-                            users.push({
-                                username: user.username,
-                                score: user.score,
-                                email: user.email
-                            });
-                        }
+    .then((snapshot) => {
+        if (snapshot.exists()) {
+            const users = [];
+            snapshot.forEach((childSnapshot) => {
+                const userData = childSnapshot.val();
+                console.log("User data:", userData);
+
+                if(userData && userData.username && userData.score !== undefined){
+                    users.push({
+                        username:userData.username,
+                        score: userData.score,
+                        email: userData.email
                     });
-                });
-                users.sort((a, b) => b.score - a.score);
-
-                if (users.length === 0) {
-                    leaderboardTable.innerHTML = "<tr><td colspan='4'>No scores available</td></tr>";
-                    return;
                 }
+            });
 
-                leaderboardTable.innerHTML = users.map((user, index) => `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${user.username}</td>
-                        <td>${user.score}</td>
-                        <td>${user.email}</td>
-                    </tr>
-                `).join("");
-            } else {
-                leaderboardTable.innerHTML = "<tr><td colspan='4'>No scores available</td></tr>";
+            users.sort((a,b) => b.score - a.score);
+
+            if(users.length === 0 ) {
+                leaderboardBody.innerHTML = "<tr><td colspan='4'>No scores available</td></tr>";
+                return;
             }
-        })
-        .catch((error) => {
-            console.error("Error loading leaderboard:", error);
-            leaderboardTable.innerHTML = "<tr><td colspan='4'>Error loading leaderboard</td></tr>";
-        });
+
+            leaderboardBody.innerHTML = users.map((user, index) => `
+            <tr>
+            <td>${index + 1}</td>
+            <td>${user.username}</td>
+            <td>${user.score}</td>
+            <td>${user.email}</td>
+            </tr>
+            `).join("");
+        } else {
+            leaderboardBody.innerHTML = "<tr><td colspan='4'>No score available</td></tr>";
+        }
+    })
+    .catch((error) => {
+        console.error("Error loading leaderboard:", error);
+        leaderboardBody.innerHTML = "<tr><td colspan = '4'>Error loading leaderboard</td></tr>";
+    });
 }
 
+document.getElementById("menu-btn").addEventListener("click", () => {
+    window.location.href = "startpage.html";
+});
+
+document.getElementById("play-btn").addEventListener("click", () => {
+    window.location.href = "gamepage.html";
+});
+
 onAuthStateChanged(auth, (user) => {
-    if (user) {
+    if(user) {
         loadLeaderboard();
-    } else {
+    }else{
         alert("You are not logged in.");
         window.location.href = "login.html";
     }
