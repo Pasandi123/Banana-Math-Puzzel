@@ -11,15 +11,17 @@ body{
 }
 
 .container{
-    background: rgb(1, 97, 1);
+    background: rgba(0, 0, 0, 0.7);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
 
 #title-form{
-    color: #ddd;
+    color: #ffd700;
+    font-weight: bolder;
+    font-size: 35px;
 }
 
 input{
@@ -32,24 +34,27 @@ input{
 }
 
 button{
-    background: rgb(228, 213, 0);
-    color: #000;
+    background: #4CAF50;
+    color: #ffffff;
     padding: 10px;
     border: none;
     cursor: pointer;
     width: 100%;
     border-radius: 5px;
     margin-top: 30px;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 #submit-btn:hover{
-    background-color: rgb(183, 182, 101);
+    background-color:  rgb(111,77,13);
 }
 
 .btn-toggle {
     color: #ddd;
     text-decoration: none;
     cursor: pointer;
+    font-weight: bold;
 }
 
 img{
@@ -65,4 +70,5 @@ img{
 
 p{
     color: #ddd;
+    font-weight: bold;
 }
