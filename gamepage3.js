@@ -123,9 +123,11 @@ document.getElementById("toggleMusicButton").addEventListener("click", function(
     if (music.muted){
         music.muted = false;
         this.textContent = "Mute Music";
+        setCookie('musicMuted', 'false', 365);
     }else{
         music.muted = true;
         this.textContent = "Unmute Music";
+        setCookie('musicMuted', 'true', 365);
     }
 });
 
@@ -137,7 +139,6 @@ document.getElementById("checkButton").addEventListener("click", checkAnswer);
 document.getElementById("nextButton").addEventListener("click",fetchPuzzle);
 
 document.getElementById("gameOverScreen").style.display = "none";
-
 
 document.querySelector(".gameOverButton[onclick='startNewGame()']").addEventListener("click", startNewGame);
 
@@ -187,4 +188,56 @@ async function updateUserScore() {
     }
 }
 
-window.onload = fetchPuzzle;
+function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+window.onload = function() {
+    const musicPreference = getCookie('musicMuted');
+    if (musicPreference === 'true') {
+        document.getElementById("backgroundMusic").muted = true;
+        document.getElementById("toggleMusicButton").textContent = "Unmuted Music";
+    }else{
+        document.getElementById("backgroundMusic").muted = false;
+        document.getElementById("toggleMusicButton").textContent = "Mute Music";
+    }
+    fetchPuzzle();
+};
+
+let inactivityTimer;
+const inactivityTimeout = 1 * 60 * 1000;
+
+function resetInactivityTimer(){
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(logoutUser, inactivityTimeout);
+}
+
+function logoutUser(){
+    alert("You have been logged out due to inactivity.");
+    signOut(auth).then(() => {
+        window.location.href = "login.html";
+    }).catch((error) => {
+        console.error("Error during automatic logout:", error);
+    });
+}
+
+window.addEventListener("mousemove", resetInactivityTimer);
+window.addEventListener("keypress", resetInactivityTimer);
+window.addEventListener("click", resetInactivityTimer);
+window.addEventListener("touchstart", resetInactivityTimer);
+
+resetInactivityTimer();
+
