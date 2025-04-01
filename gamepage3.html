@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Math Puzzle</title>
+    <link rel="stylesheet" href="gamepage.css">
+</head>
+<body>
+    <h1>Banana Math Puzzle Game</h1>
+    <div id="usernameDisplay">Loading...</div>
+    <div id="score">Score: 0</div>
+    <div id="timer">Time Left: 10s</div>
+    <img id="puzzleImage" src="" alt="Loading puzzle...">
+
+        <div>
+            <input type="number" id="answerInput" placeholder="Your answer">
+            <button class="gameButton" id="checkButton">Check</button>
+        </div>
+        <div id="feedback"></div>
+        <button class="gameButton" id="nextButton" style="display:none;">Next Question</button>
+
+        <div id="gameArea">
+            <img id="boy" src="image/mowgli_PNG2.png" alt="Boy">
+            <img id="banana" src="image/banana.png" alt="Banana">
+            <img id="flag" src="image/red flag.png" alt="Winning Flag">
+        </div>
+
+        <audio id="backgroundMusic" loop autoplay>
+            <source src="./voice/audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <button class="gameButton" id="toggleMusicButton">Sound</button>
+
+        <div id="gameOverScreen">
+            <p id="gameOverMessage">Game Over!</p>
+            <button class="gameButton gameOverButton" onclick="startNewGame()">New Game</button>
+            <button class="gameButton gameOverButton" onclick="changeLevel()">Change Level</button>
+        </div>
+        <script type="module" src="gamepage3.js"></script>
+    </body>
+</html>
