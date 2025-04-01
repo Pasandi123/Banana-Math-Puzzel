@@ -45,21 +45,21 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 function fetchPuzzle(){
-    if(questionCount >= maxQuestions){
+    if (questionCount >= maxQuestions){
         endGame(`Congratulations! You reached the flag! Your Score: ${score}`);
         moveBoyToFlag();
         updateUserScore();
         return;
     }
 
-  fetch("https://marcconrad.com/uob/banana/api.php")
+    fetch("https://marcconrad.com/uob/banana/api.php")
     .then(response => response.json())
     .then(data => {
         document.getElementById("puzzleImage").src = data.question;
         correctSolution = data.solution;
         document.getElementById("feedback").textContent = "";
         document.getElementById("answerInput").value = "";
-        document.getElementById("nextButton").style.display = "none";
+        document.getElementById("nextButton"). style.display = "none";
         startTimer();
     })
     .catch(() => {
@@ -73,9 +73,9 @@ function startTimer(){
     timer = setInterval(() => {
         timeLeft--;
         document.getElementById("timer").textContent = `Time Left: ${timeLeft}s`;
-        if(timeLeft <= 0){
+        if (timeLeft <= 0) {
             clearInterval(timer);
-            endGame("Time's Up! Try Again.");
+            endGame("Time's up! Try again.");
             updateUserScore();
         }
     }, 1000);
@@ -87,13 +87,13 @@ function moveBoy(){
     document.getElementById("banana").style.left = `${boyPosition + 40}px`;
 }
 
-function moveBoyToFlag(){
+function moveBoyToFlag() {
     document.getElementById("boy").style.left = "450px";
-    document.getElementById("banana").style.left = "490px";
+    document.getElementById("banana").style.left ="490px";
 }
 
-function dropBanana(){
-    const banana = document.getElementById('banana');
+function dropBanana() {
+    const banana = document.getElementById("banana");
     banana.style.bottom = "50px";
     setTimeout(() => {
         endGame("A Banana fell down! Game Over.");
@@ -101,13 +101,13 @@ function dropBanana(){
     }, 500);
 }
 
-function checkAnswer(){
+function checkAnswer() {
     const userAnswer = parseInt(document.getElementById("answerInput").value, 10);
-    if(isNaN(userAnswer)){
+    if(isNaN(userAnswer)) {
         document.getElementById("feedback").textContent = "Enter a valid number!";
         return;
     }
-    if(userAnswer === correctSolution){
+    if(userAnswer === correctSolution) {
         moveBoy();
         questionCount++;
         score += 20;
@@ -118,9 +118,9 @@ function checkAnswer(){
     }
 }
 
-document.getElementById("toggleMusicButton").addEventListener("click", function(){
+document.getElementById("toggleMusicButton").addEventListener("click", function() {
     const music = document.getElementById("backgroundMusic");
-    if(music.muted){
+    if (music.muted){
         music.muted = false;
         this.textContent = "Mute Music";
     }else{
@@ -129,18 +129,15 @@ document.getElementById("toggleMusicButton").addEventListener("click", function(
     }
 });
 
-document.getElementById("backButton").addEventListener("click", function() {
-    window.location.href = "levelpage.html";
-});
-
 document.getElementById("checkButton").addEventListener("click", checkAnswer);
-document.getElementById("nextButton").addEventListener("click", fetchPuzzle);
+document.getElementById("nextButton").addEventListener("click",fetchPuzzle);
 
 document.getElementById("gameOverScreen").style.display = "none";
 
+
 document.querySelector(".gameOverButton[onclick='startNewGame()']").addEventListener("click", startNewGame);
 
-function startNewGame(){
+function startNewGame() {
     fetchPuzzle();
     score = 0;
     questionCount = 0;
