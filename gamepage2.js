@@ -27,15 +27,15 @@ const stepSize = 100;
 
 onAuthStateChanged(auth, async (user) => {
     if(user) {
-        try{
+        try {
             const userRef = ref(db, `users/${user.uid}`);
             const snapshot = await get (userRef);
-            if(snapshot.exists() && snapshot.val1().username) {
+            if(snapshot.exists() && snapshot.val().username) {
                 document.getElementById("usernameDisplay").textContent = `welcome, ${snapshot.val().username}!`;
             }else{
                 document.getElementById("usernameDisplay").textContent = `welcome, Player!`;
             }
-        }  catch (error) {
+        } catch (error) {
             console.error("Error fetching username:", error);
             document.getElementById("usernameDisplay").textContent = `Welcome, Player!`;
         }
