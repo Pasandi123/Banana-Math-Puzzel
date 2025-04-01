@@ -15,6 +15,7 @@ function leaderBoard() {
 
 function exitGame(){
     if(confirm('Are you sure you want to exit?')) {
-        window.close();
+        sessionStorage.removeItem("user");
+        window.location.href = "login.html";
     }
 }
