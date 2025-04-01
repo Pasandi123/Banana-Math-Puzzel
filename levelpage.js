@@ -1,16 +1,15 @@
-function selectLevel(easyButton){
-    alert(`Starting Level ${easyButton}!`);
-    window.location.href = `gamepage.html?button=${easyButton}`;
+function selectLevel1(){
+    alert("Starting Level Easy!");
+    window.location.href = "gamepage.html";
 }
 
-function selectLevel(mediumButton){
-    alert(`Starting Level ${mediumButton}!`);
-    window.location.href = `gamepage2.html?button=${mediumButton}`;
+function selectLevel2(){
+    alert("Starting Level Medium!");
+    window.location.href = "gamepage2.html";
 }
-
-function selectLevel(hardButton){
-    alert(`Starting Level ${hardButton}!`);
-    window.location.href = `gamepage3.html?button=${hardButton}`;
+function selectLevel3(){
+    alert("Starting Level Hard!");
+    window.location.href = "gamepage3.html";
 }
 
 document.getElementById("gotomenu").addEventListener("click", () => {
