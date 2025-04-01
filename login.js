@@ -67,16 +67,18 @@ authForm.addEventListener("submit", async (e) => {
                 password: password
             });
 
-            alert("Sign up Successful!");
+            alert("Sign up Successful! Please log in.");
             console.log("User signed up:", user);
+
+            window.location.href = "login.html";
         }else{
 
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             alert("Login Successful!");
             console.log("User logged in:", userCredential.user);
-        }
 
-        window.location.href = "startpage.html";
+            window.location.href = "startpage.html";
+        }  
 
     }catch (error){
         alert("Error: " + error.message);
