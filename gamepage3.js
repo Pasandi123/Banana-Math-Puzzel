@@ -129,6 +129,10 @@ document.getElementById("toggleMusicButton").addEventListener("click", function(
     }
 });
 
+document.getElementById("backButton").addEventListener("click", function() {
+    window.location.href = "levelpage.html";
+});
+
 document.getElementById("checkButton").addEventListener("click", checkAnswer);
 document.getElementById("nextButton").addEventListener("click",fetchPuzzle);
 
