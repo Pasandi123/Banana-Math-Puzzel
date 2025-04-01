@@ -190,7 +190,7 @@ async function updateUserScore() {
 
 function setCookie(name, value, days) {
     const expires = new Date();
-    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 *1000 ));
+    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
     document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
 }
 
@@ -239,4 +239,5 @@ window.addEventListener("keypress", resetInactivityTimer);
 window.addEventListener("click", resetInactivityTimer);
 window.addEventListener("touchstart", resetInactivityTimer);
 
-window.onload = fetchPuzzle;
+resetInactivityTimer();
+
