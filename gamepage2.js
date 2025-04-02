@@ -18,7 +18,7 @@ const db = getDatabase(app);
 
 let correctSolution = null;
 let score = 0;
-let timeLeft = 30;
+let timeLeft = 20;
 let timer;
 let questionCount = 0;
 const maxQuestions = 5;
@@ -69,7 +69,7 @@ function fetchPuzzle(){
 
 function startTimer(){
     clearInterval(timer);
-    timeLeft = 30;
+    timeLeft = 20;
     timer = setInterval(() => {
         timeLeft--;
         document.getElementById("timer").textContent = `Time Left: ${timeLeft}s`;
@@ -110,7 +110,7 @@ function checkAnswer() {
     if(userAnswer === correctSolution) {
         moveBoy();
         questionCount++;
-        score += 10;
+        score += 20;
         document.getElementById("score").textContent = `Score: ${score}`;
         document.getElementById("nextButton").style.display = "inline";
     }else{
