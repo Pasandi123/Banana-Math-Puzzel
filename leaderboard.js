@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -80,3 +80,27 @@ onAuthStateChanged(auth, (user) => {
         window.location.href = "login.html";
     }
 });
+
+let inactivityTimer;
+const inactivityTimeout = 1 * 60 * 1000;
+
+function resetInactivityTimer(){
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(logoutUser, inactivityTimeout);
+}
+
+function logoutUser(){
+    alert("You have been logged out due to inactivity.");
+    signOut(auth).then(() => {
+        window.location.href = "login.html";
+    }).catch((error) => {
+        console.error("Error during automatic logout:", error);
+    });
+}
+
+window.addEventListener("mousemove", resetInactivityTimer);
+window.addEventListener("keypress", resetInactivityTimer);
+window.addEventListener("click", resetInactivityTimer);
+window.addEventListener("touchstart", resetInactivityTimer);
+
+resetInactivityTimer();
