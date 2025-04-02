@@ -3,14 +3,15 @@ import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/fi
 import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBIajj3vQed9DndpqovRZdNZOUr8R6zUn8",
-    authDomain: "bananamathpuzzel.firebaseapp.com",
-    projectId: "bananamathpuzzel",
-    storageBucket: "bananamathpuzzel.appspot.com",
-    messagingSenderId: "317182880009",
-    appId: "1:317182880009:web:55e4f7f5a0eca2641c0bd8",
-    measurementId: "G-GWM46LSVEK"
-};
+    apiKey: "AIzaSyBCUmHXH1AOact926P2GNAtDY_sbIvCpY0",
+    authDomain: "bananagame-4f75b.firebaseapp.com",
+    databaseURL: "https://bananagame-4f75b-default-rtdb.firebaseio.com/",
+    projectId: "bananagame-4f75b",
+    storageBucket: "bananagame-4f75b.firebasestorage.app",
+    messagingSenderId: "641695960260",
+    appId: "1:641695960260:web:f1d54dba8d12a65fc44d91",
+    measurementId: "G-58HYY7SW1C"
+  };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
