@@ -1,3 +1,10 @@
+//code was writting with the help of chatGPT
+//https://youtu.be/Uhbn1KmiNbg?si=TkDpJn7LDMJgEppU
+//https://youtu.be/2crtIMKf9bs?si=FzZhJernFq5Ft1F2
+//https://youtu.be/D2DHNbnUTwc?si=59Y8yBkrwQyqFkzO
+//https://firebase.google.com/docs/web/setup
+//https://firebase.google.com/docs/auth/web/start
+//https://firebase.google.com/docs/database/web/start
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";

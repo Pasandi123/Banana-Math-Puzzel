@@ -1,3 +1,5 @@
+//code was writting with the help of chatGPT
+//https://firebase.google.com/docs/web/setup
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
@@ -52,7 +54,7 @@ function fetchPuzzle(){
         updateUserScore();
         return;
     }
-
+//https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
     fetch("https://marcconrad.com/uob/banana/api.php")
     .then(response => response.json())
     .then(data => {
@@ -118,7 +120,7 @@ function checkAnswer() {
         dropBanana();
     }
 }
-
+//https://stackoverflow.com/questions/66528033/set-cookie-for-mute-unmute-sound-in-website
 document.getElementById("toggleMusicButton").addEventListener("click", function() {
     const music = document.getElementById("backgroundMusic");
     if (music.muted){
@@ -188,7 +190,7 @@ async function updateUserScore() {
         }
     }
 }
-
+//https://stackoverflow.com/questions/50041235/create-cookie-for-audio-play-mute-setting
 function setCookie(name, value, days) {
     const expires = new Date();
     expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -217,6 +219,9 @@ window.onload = function() {
     }
     fetchPuzzle();
 };
+
+//https://stackoverflow.com/questions/16351737/log-out-automatically-when-there-is-no-use-of-keyboard-or-mouse
+//https://stackoverflow.com/questions/9462497/javascript-cleartimeout-not-clearing-timeout-this-shouldnt-be-hard
 
 let inactivityTimer;
 const inactivityTimeout = 1 * 60 * 1000;

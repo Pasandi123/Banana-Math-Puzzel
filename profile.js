@@ -1,3 +1,5 @@
+//code was writting with the help of chatGPT
+//https://firebase.google.com/docs/web/setup
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
@@ -16,7 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
-
+//https://stackoverflow.com/questions/74721935/display-user-profile-information-from-firebase-real-time-database
 const usernameDisplay = document.getElementById("profile-username");
 const emailDisplay = document.getElementById("profile-email");
 const scoreDisplay = document.getElementById("profile-score");
@@ -51,7 +53,8 @@ document.getElementById("menu-btn").addEventListener("click", () => {
 document.getElementById("play-again-btn").addEventListener("click", () => {
     window.location.href = "gamepage.html";
 });
-
+//https://stackoverflow.com/questions/16351737/log-out-automatically-when-there-is-no-use-of-keyboard-or-mouse
+//https://stackoverflow.com/questions/9462497/javascript-cleartimeout-not-clearing-timeout-this-shouldnt-be-hard
 let inactivityTimer;
 const inactivityTimeout = 1 * 60 * 1000;
 

@@ -1,3 +1,5 @@
+//code was writting with the help of chatGPT
+//https://firebase.google.com/docs/web/setup
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
@@ -81,7 +83,8 @@ onAuthStateChanged(auth, (user) => {
         window.location.href = "login.html";
     }
 });
-
+//https://stackoverflow.com/questions/16351737/log-out-automatically-when-there-is-no-use-of-keyboard-or-mouse
+//https://stackoverflow.com/questions/9462497/javascript-cleartimeout-not-clearing-timeout-this-shouldnt-be-hard
 let inactivityTimer;
 const inactivityTimeout = 1 * 60 * 1000;
 
